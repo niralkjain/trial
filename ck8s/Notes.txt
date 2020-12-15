@@ -1,0 +1,165 @@
+
+
+C:\Mine All\test\simplek8s\clean>kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf
+secret/pgpassword created
+
+C:\Mine All\test\simplek8s\clean>kubectl get secrets
+NAME                  TYPE                                  DATA   AGE
+default-token-zhmd7   kubernetes.io/service-account-token   3      114m
+pgpassword            Opaque                                1      3s
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS                       RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running                      0          108m
+postgres-deployment-86d6f569cb-2qdrk   0/1     CreateContainerConfigError   0          25m
+redis-deployment-778647c78-zkgrh       1/1     Running                      0          108m
+server-deployment-6b6d688d7c-sgb57     0/1     CreateContainerConfigError   0          25m
+worker-deployment-6585996f47-gl8rk     1/1     Running                      0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl delete deployment.apps/postgres-deployment
+deployment.apps "postgres-deployment" deleted
+
+C:\Mine All\test\simplek8s\clean>kubectl delete deployment.apps/server-deployment
+deployment.apps "server-deployment" deleted
+
+C:\Mine All\test\simplek8s\clean>kubectl apply -f ck8s
+service/client-cluster-ip-service unchanged
+deployment.apps/client-deployment unchanged
+persistentvolumeclaim/database-persistent-volume-claim unchanged
+persistentvolume/database-persistent-volume unchanged
+ingress.extensions/ingress-service configured
+service/postgres-cluster-ip-service unchanged
+deployment.apps/postgres-deployment created
+service/redis-cluster-ip-service unchanged
+deployment.apps/redis-deployment unchanged
+service/server-cluster-ip-service unchanged
+deployment.apps/server-deployment created
+deployment.apps/worker-deployment unchanged
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          8s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     0/1     ContainerCreating   0          7s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          13s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     0/1     ContainerCreating   0          12s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          15s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     0/1     ContainerCreating   0          14s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          16s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          15s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          18s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          17s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          19s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          18s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          21s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          20s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          23s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          22s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          25s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          24s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running             0          108m
+postgres-deployment-6fb8d99dc4-k4lwl   0/1     ContainerCreating   0          26s
+redis-deployment-778647c78-zkgrh       1/1     Running             0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running             0          25s
+worker-deployment-6585996f47-gl8rk     1/1     Running             0          108m
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+client-deployment-5dfb6bf966-g5qxb     1/1     Running   0          109m
+postgres-deployment-6fb8d99dc4-k4lwl   1/1     Running   0          30s
+redis-deployment-778647c78-zkgrh       1/1     Running   0          108m
+server-deployment-6b6d688d7c-b5n5h     1/1     Running   0          29s
+worker-deployment-6585996f47-gl8rk     1/1     Running   0          108m
+
+
+
+
+
+C:\Mine All\test\simplek8s\clean>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+error: unable to read URL "https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml", server reported 404 Not Found, status code=404
+
+C:\Mine All\test\simplek8s\clean>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
+namespace/ingress-nginx created
+serviceaccount/ingress-nginx created
+configmap/ingress-nginx-controller created
+clusterrole.rbac.authorization.k8s.io/ingress-nginx created
+clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created
+role.rbac.authorization.k8s.io/ingress-nginx created
+rolebinding.rbac.authorization.k8s.io/ingress-nginx created
+service/ingress-nginx-controller-admission created
+service/ingress-nginx-controller created
+deployment.apps/ingress-nginx-controller created
+validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission configured
+serviceaccount/ingress-nginx-admission created
+clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission configured
+clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission configured
+role.rbac.authorization.k8s.io/ingress-nginx-admission created
+rolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created
+job.batch/ingress-nginx-admission-create created
+job.batch/ingress-nginx-admission-patch created
+
+
+:\Mine All\MyKubernetes>minikube addons enable ingress
+* The 'ingress' addon is enabled
+
+
+
+
+C:\Mine All\test\simplek8s\clean>kubectl get pods -n ingress-nginx
+NAME                                       READY   STATUS             RESTARTS   AGE
+ingress-nginx-admission-create-p5fqp       0/1     Completed          0          5m22s
+ingress-nginx-admission-patch-rxqwj        0/1     CrashLoopBackOff   5          5m22s
+ingress-nginx-controller-ddf87ddc8-dgw58   1/1     Running            0          5m27s
